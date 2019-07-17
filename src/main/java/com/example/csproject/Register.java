@@ -7,11 +7,16 @@ import android.os.Bundle;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
-@EActivity(R.layout.activity_add_class)
-public class AddClass extends AppCompatActivity {
+@EActivity(R.layout.activity_register)
+public class Register extends AppCompatActivity {
 
-    @Click(R.id.acAddBtn)
-    public void add() {
+    @Click(R.id.regRegisterBtn)
+    public void register() {
+        finish();
+    }
+
+    @Click(R.id.regCancelBtn)
+    public void cancel() {
         finish();
     }
 
