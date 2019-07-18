@@ -40,13 +40,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
 
         <Button
             android:id="@+id/loginSignInBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:background="@drawable/btn_background"
             android:text="Sign in" />
 
         <Button
@@ -54,6 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@drawable/btn_background"
             android:text="Register" />
 
     </LinearLayout>
