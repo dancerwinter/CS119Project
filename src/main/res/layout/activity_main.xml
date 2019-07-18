@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="15dp"
     android:orientation="vertical">
 
@@ -10,6 +11,8 @@
         android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:background="@drawable/btn_background"
         android:text="logout" />
 
     <TextView
@@ -22,6 +25,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_marginTop="15sp"
         android:layout_marginBottom="15sp"
         android:layout_height="250dp" />
@@ -36,6 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/btn_background"
             android:text="Manage subjects" />
 
         <!--<Button-->
@@ -51,6 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:background="@drawable/btn_background"
             android:text="add class"
             android:drawableLeft="@android:drawable/ic_input_add"/>
 
