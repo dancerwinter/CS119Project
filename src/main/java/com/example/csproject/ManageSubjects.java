@@ -10,6 +10,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import io.realm.RealmResults;
@@ -20,15 +21,31 @@ public class ManageSubjects extends AppCompatActivity {
     @ViewById(R.id.recyclerView2)
     RecyclerView recyclerView;
 
+    @Extra
+    String userUUID;
+
     @Bean
-    ClassManager classMng;
+    UserManager uman;
+    @Bean
+    MyPrefs prefs;
+    @Bean
+    ClassManager cman;
+    private User currentUser;
 
     @AfterViews
     public void init() {
+        //get current user name from prefs
+        String name = prefs.getCurrentUser();
+        currentUser = uman.getUser(name);
         // the layout for the recycler is the class_edit.xml
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
+
+        RealmResults<Class> classList = cman.getUserClasses(currentUser.getUUID());
+        ClassManAdapter cma = new ClassManAdapter(classList, this);
+        recyclerView.setAdapter(cma);
+
 
         // RealmResults<Class> classList = classMng.findAll();
 

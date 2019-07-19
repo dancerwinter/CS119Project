@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     MyPrefs prefs;
     @Bean
     UserManager uman;
-
+    @ViewById(R.id.welcomeText)
+    TextView welcomeText;
     private User user;
 
     @ViewById(R.id.recyclerView)
@@ -30,16 +32,21 @@ public class MainActivity extends AppCompatActivity {
     public void init() {
         // the layout for the recycler is the class_row.xml
         user = uman.getUser(uname);
+        welcomeText.setText("\nWelcome " + uname + "\nYou have 3 classes today\n");
     }
 
     @Click(R.id.addClassBtn)
     public void add() {
-        AddClass_.intent(this).start();
+        AddClass_.intent(this)
+                .userUUID(user.getUUID())
+                .start();
     }
 
     @Click(R.id.manageSubjBtn)
     public void manage() {
-        ManageSubjects_.intent(this).start();
+        ManageSubjects_.intent(this)
+                .userUUID(user.getUUID())
+                .start();
     }
 
     @Click(R.id.logoutBtn)
