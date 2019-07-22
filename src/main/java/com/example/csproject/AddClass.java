@@ -2,10 +2,8 @@ package com.example.csproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
@@ -18,19 +16,19 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_add_class)
 public class AddClass extends AppCompatActivity {
 
-    @ViewById(R.id.acSubject)
+    @ViewById(R.id.edSubject)
     EditText acSubject;
-    @ViewById(R.id.acBuilding)
+    @ViewById(R.id.edBuilding)
     EditText acBuilding;
-    @ViewById(R.id.acRoom)
+    @ViewById(R.id.edRoom)
     EditText acRoom;
-    @ViewById(R.id.acSection)
+    @ViewById(R.id.edSection)
     EditText acSection;
-    @ViewById(R.id.acTeacher)
+    @ViewById(R.id.edTeacher)
     EditText acTeacher;
-    @ViewById(R.id.acTimeStart)
+    @ViewById(R.id.edTimeStart)
     EditText acTimeStart;
-    @ViewById(R.id.acTimeEnd)
+    @ViewById(R.id.edTimeEnd)
     EditText acTimeEnd;
 
     // Repeating days views
@@ -70,7 +68,7 @@ public class AddClass extends AppCompatActivity {
 
 
 
-    @Click(R.id.acAddBtn)
+    @Click(R.id.edSaveBtn)
     public void add() {
         if (isFilled()) {
             Boolean mon = cbMon.isChecked();

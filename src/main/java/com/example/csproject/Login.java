@@ -57,6 +57,7 @@ public class Login extends AppCompatActivity {
                 MainActivity_.intent(this)
                         .uname(un)
                         .start();
+                uman.close();
 
             }
             else{
@@ -71,6 +72,7 @@ public class Login extends AppCompatActivity {
     @Click(R.id.loginRegBtn)
     public void register() {
         Register_.intent(this).start();
+        uman.close();
     }
     public void pop(String s){
         Toast.makeText(this,s, Toast.LENGTH_LONG).show();

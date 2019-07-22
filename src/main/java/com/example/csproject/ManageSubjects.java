@@ -45,6 +45,7 @@ public class ManageSubjects extends AppCompatActivity {
         RealmResults<Class> classList = cman.getUserClasses(currentUser.getUUID());
         ClassManAdapter cma = new ClassManAdapter(classList, this);
         recyclerView.setAdapter(cma);
+        uman.close();
 
 
         // RealmResults<Class> classList = classMng.findAll();
@@ -55,6 +56,7 @@ public class ManageSubjects extends AppCompatActivity {
 
     @Click(R.id.msAddClassBtn)
     public void add() {
+        cman.close();
         AddClass_.intent(this).start();
     }
 
@@ -63,4 +65,11 @@ public class ManageSubjects extends AppCompatActivity {
         finish();
     }
 
+    public void goToEdit(Class c){
+        editClass_.intent(this)
+                .classUUID(c.getUUID())
+                .username(currentUser.getUsername())
+                .start();
+//        cman.close();
+    }
 }

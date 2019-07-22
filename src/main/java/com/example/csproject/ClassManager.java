@@ -44,6 +44,10 @@ public class ClassManager {
         return realm.where(Class.class).findAll();
     }
 
+    public Class getClass(String UUID){
+        return realm.where(Class.class).contains("UUID", UUID).findFirst();
+    }
+
     public RealmResults<Class> getUserClasses(String userUUID){
         return realm.where(Class.class).contains("userUUID", userUUID).findAll();
     }
