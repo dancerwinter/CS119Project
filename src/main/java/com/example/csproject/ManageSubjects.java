@@ -72,4 +72,7 @@ public class ManageSubjects extends AppCompatActivity {
                 .start();
 //        cman.close();
     }
+    public void deleteClass(Class c){
+        cman.deleteClass(c);
+    }
 }

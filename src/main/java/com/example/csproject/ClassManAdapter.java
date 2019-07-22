@@ -31,18 +31,23 @@ public class ClassManAdapter extends RealmRecyclerViewAdapter<Class, ClassManAda
         Class c = getItem(position);
         holder.subjectName.setText(c.getSubject());
         holder.editClass.setTag(c);
+        holder.deleteClass.setTag(c);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView subjectName;
         private Button editClass;
+        private Button deleteClass;
         public ViewHolder(@NonNull View itemView){
             super (itemView);
             subjectName = itemView.findViewById(R.id.textView);
             editClass = itemView.findViewById(R.id.button);
+            deleteClass = itemView.findViewById(R.id.button2);
+
+
 
             editClass.setOnClickListener(editListener);
-
+            deleteClass.setOnClickListener(deleteListener);
         }
     }
     private View.OnClickListener editListener = new View.OnClickListener(){
@@ -50,6 +55,13 @@ public class ClassManAdapter extends RealmRecyclerViewAdapter<Class, ClassManAda
         public void onClick(View v){
             Class c = (Class) v.getTag();
             context.goToEdit(c);
+        }
+    };
+    private View.OnClickListener deleteListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Class c = (Class) v.getTag();
+            context.deleteClass(c);
         }
     };
 }
