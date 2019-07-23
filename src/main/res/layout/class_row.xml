@@ -52,19 +52,19 @@
 
         <TextView
             android:id="@+id/tvRepeat"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_weight="1"
-            android:text="M W F" />
+            android:text="M W F"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvLocation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_weight="1"
-            android:text="CTC 205" />
+            android:text="CTC 205"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

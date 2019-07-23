@@ -66,6 +66,28 @@ public class ClassManager {
         }
         realm.commitTransaction();
     }
+
+    public RealmResults<Class> getUserClassForToday(int dayInTheWeek, String userUUID){
+
+        switch (dayInTheWeek){
+            case 0:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Sunday",true).findAll();
+            case 1:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Monday",true).findAll();
+            case 2:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Tuesday",true).findAll();
+            case 3:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Wednesday",true).findAll();
+            case 4:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Thursday",true).findAll();
+            case 5:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Friday",true).findAll();
+            case 6:
+                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Saturday",true).findAll();
+
+        }
+        return null;
+    }
     public void close() {
         realm.close();
     }
