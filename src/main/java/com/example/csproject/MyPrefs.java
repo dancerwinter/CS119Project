@@ -53,4 +53,8 @@ public class MyPrefs {
         creds.add(pass);
         return creds;
     }
+
+    public String getCurrentUser(){
+        return preferences.getString("currentUsername", "this is bad");
+    }
 }
