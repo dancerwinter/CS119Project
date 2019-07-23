@@ -28,6 +28,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
+
     def AAVersion = '4.6.0'
     // Android annotations
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
@@ -47,4 +48,13 @@ dependencies {
 
     // PERMISSIONS
     implementation 'com.karumi:dexter:5.0.0'
+
+    def work_version = "2.1.0"
+
+    // ANDROID WORKMANAGER
+    implementation "androidx.work:work-runtime:$work_version"
+    // optional - RxJava2 support
+    implementation "androidx.work:work-rxjava2:$work_version"
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
 }
