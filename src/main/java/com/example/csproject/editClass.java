@@ -2,6 +2,7 @@ package com.example.csproject;
 
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_edit_class)
 public class editClass extends AppCompatActivity {
+
     @ViewById(R.id.edSubject)
     EditText edSubj;
     @ViewById(R.id.edSection)
@@ -45,6 +47,9 @@ public class editClass extends AppCompatActivity {
     @ViewById(R.id.cbSun)
     CheckBox cbSun;
 
+    @ViewById
+    ImageView ecImageViewClass;
+
     @Extra
     String username;
 
@@ -59,6 +64,7 @@ public class editClass extends AppCompatActivity {
 
     private User user;
     private Class classEdited;
+
     @AfterViews
     public void init(){
         user = uman.getUser(username);
@@ -136,5 +142,10 @@ public class editClass extends AppCompatActivity {
     }
     public void pop(String s){
         Toast.makeText(this,s, Toast.LENGTH_LONG).show();
+    }
+
+    @Click(R.id.ecChangePic)
+    public void changePic() {
+
     }
 }
