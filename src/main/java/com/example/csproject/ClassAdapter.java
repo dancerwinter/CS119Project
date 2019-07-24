@@ -22,7 +22,7 @@ public class ClassAdapter extends RealmRecyclerViewAdapter<Class,ClassAdapter.Vi
     @NonNull
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = context.getLayoutInflater().inflate(R.layout.class_row,null);
+        View v = context.getLayoutInflater().inflate(R.layout.class_row, parent, false);
         return new ViewHolder(v);
     }
 

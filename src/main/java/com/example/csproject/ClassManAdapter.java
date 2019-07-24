@@ -22,7 +22,7 @@ public class ClassManAdapter extends RealmRecyclerViewAdapter<Class, ClassManAda
     @NonNull
     @Override
     public ClassManAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = context.getLayoutInflater().inflate(R.layout.class_edit, null);
+        View v = context.getLayoutInflater().inflate(R.layout.class_edit, parent, false);
         return new ViewHolder(v);
     }
 
