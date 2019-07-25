@@ -13,6 +13,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.File;
+
 import io.realm.RealmResults;
 
 @EActivity(R.layout.activity_manage_subjects)
@@ -56,7 +58,7 @@ public class ManageSubjects extends AppCompatActivity {
 
     @Click(R.id.msAddClassBtn)
     public void add() {
-        cman.close();
+//        cman.close();
         AddClass_.intent(this).start();
     }
 
@@ -73,6 +75,14 @@ public class ManageSubjects extends AppCompatActivity {
 //        cman.close();
     }
     public void deleteClass(Class c){
+        deleteImage(c);
         cman.deleteClass(c);
+
+
+    }
+    private void deleteImage(Class c){
+        File getImageDir = getExternalCacheDir();
+        File jpeg = new File(getImageDir, c.getSubject()+".jpeg");
+        jpeg.delete();
     }
 }

@@ -111,27 +111,33 @@ public class AddClass extends AppCompatActivity {
     @Click(R.id.edSaveBtn)
     public void add() {
         if (isFilled()) {
-            Boolean mon = cbMon.isChecked();
-            Boolean tues = cbTue.isChecked();
-            Boolean wed = cbWed.isChecked();
-            Boolean thu = cbThu.isChecked();
-            Boolean fri = cbFri.isChecked();
-            Boolean sat = cbSat.isChecked();
-            Boolean sun = cbSun.isChecked();
+            if (!cman.classChecker(currentUser,acSubject.getText().toString())) {
+                Boolean mon = cbMon.isChecked();
+                Boolean tues = cbTue.isChecked();
+                Boolean wed = cbWed.isChecked();
+                Boolean thu = cbThu.isChecked();
+                Boolean fri = cbFri.isChecked();
+                Boolean sat = cbSat.isChecked();
+                Boolean sun = cbSun.isChecked();
 
-            String subject = acSubject.getText().toString();
-            String section = acSection.getText().toString();
-            String building = acBuilding.getText().toString();
-            String room = acRoom.getText().toString();
-            String teacher = acTeacher.getText().toString();
-            String timeStart = acTimeStart.getText().toString();
-            String timeEnd = acTimeEnd.getText().toString();
+                String subject = acSubject.getText().toString();
+                String section = acSection.getText().toString();
+                String building = acBuilding.getText().toString();
+                String room = acRoom.getText().toString();
+                String teacher = acTeacher.getText().toString();
+                String timeStart = acTimeStart.getText().toString();
+                String timeEnd = acTimeEnd.getText().toString();
 
-            Class c = cman.createClass(subject, section, building,room, teacher, timeStart, timeEnd, currentUser.getUUID(),mon, tues, wed, thu, fri, sat, sun);
+                Class c = cman.createClass(subject, section, building,room, teacher, timeStart, timeEnd, currentUser.getUUID(),mon, tues, wed, thu, fri, sat, sun);
 
-            cman.addClass(c);
-            finish();
-        }else{
+                cman.addClass(c);
+                finish();
+            }
+            else {
+                pop("The class " + acSubject.getText().toString() + " already exists");
+            }
+        }
+        else{
             pop("Please fill all fields");
         }
     }
@@ -163,7 +169,7 @@ public class AddClass extends AppCompatActivity {
         String name = acSubject.getText().toString();
 
         if (name.equals("")) {
-            popup("Please input first a subject name");
+            pop("Please input first a subject name");
         }
         else {
             ClassPhotoCrop_.intent(this)
@@ -179,7 +185,7 @@ public class AddClass extends AppCompatActivity {
         // change image name to username + number in array
         File getImageDir = getExternalCacheDir();
 
-        String name = acSubject.getText().toString();
+        String name = acSubject.getText().toString() + currentUser.getUsername();
         System.out.println(name);
         File savedImage = new File(getImageDir, name);
 
@@ -192,7 +198,9 @@ public class AddClass extends AppCompatActivity {
         // gets the sd card path
         File getImageDir = getExternalCacheDir();
 
-        String filename = name;
+
+        String filename = name +currentUser.getUsername() + ".jpeg";
+
 
         // change image name to username + number in array
         File savedImage = new File(getImageDir, filename);
@@ -209,7 +217,7 @@ public class AddClass extends AppCompatActivity {
                 // save rawImage to file savedImage.jpeg
                 // load file via picasso
                 byte[] jpeg = data.getByteArrayExtra("rawJpeg");
-                String name = data.getStringExtra("name");
+                String name = data.getStringExtra("subjectName");
 
                 try {
                     File savedImage = saveFile(jpeg, name);
@@ -229,7 +237,4 @@ public class AddClass extends AppCompatActivity {
                 .into(imageViewClass);
     }
 
-    public void popup(String s) {
-        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
-    }
 }
