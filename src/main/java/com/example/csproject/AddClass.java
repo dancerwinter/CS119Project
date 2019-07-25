@@ -192,7 +192,7 @@ public class AddClass extends AppCompatActivity {
         // gets the sd card path
         File getImageDir = getExternalCacheDir();
 
-        String filename = name + ".jpeg";
+        String filename = name;
 
         // change image name to username + number in array
         File savedImage = new File(getImageDir, filename);
