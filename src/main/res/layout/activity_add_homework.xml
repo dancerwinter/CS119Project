@@ -41,9 +41,12 @@
         android:id="@+id/etHWDesc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textPersonName"
-        android:scrollbars = "vertical"
+        android:inputType="textCapSentences|textMultiLine"
         android:gravity="top"
+        android:singleLine="false"
+        android:scrollHorizontally="false"
+        android:background="@null"
+        android:layout_margin="5sp"
         android:hint="Add description" />
 
 </LinearLayout>
