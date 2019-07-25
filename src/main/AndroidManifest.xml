@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.csproject">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".RealmApp_"
         android:allowBackup="false"
@@ -10,7 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManageSubjects_"></activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.csproject"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_path" />
+        </provider>
+
+        <activity android:name=".ClassPhotoCrop_"></activity>
+        <activity android:name=".ManageSubjects_" />
         <activity android:name=".Register_" />
         <activity android:name=".Login_">
             <intent-filter>
@@ -21,7 +37,7 @@
         </activity>
         <activity android:name=".AddClass_" />
         <activity android:name=".MainActivity_" />
-        <activity android:name = ".editClass_"/>
+        <activity android:name=".editClass_" />
     </application>
 
 </manifest>
