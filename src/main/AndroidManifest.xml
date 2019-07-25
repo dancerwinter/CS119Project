@@ -14,10 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AddHomework_"></activity>
+        <activity android:name=".ClassDetails_" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.csproject"
+            android:authorities="com.example.realmrecphotos"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -25,7 +27,7 @@
                 android:resource="@xml/file_provider_path" />
         </provider>
 
-        <activity android:name=".ClassPhotoCrop_"></activity>
+        <activity android:name=".ClassPhotoCrop_" />
         <activity android:name=".ManageSubjects_" />
         <activity android:name=".Register_" />
         <activity android:name=".Login_">

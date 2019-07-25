@@ -23,8 +23,16 @@ public class ClassAdapter extends RealmRecyclerViewAdapter<Class,ClassAdapter.Vi
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = context.getLayoutInflater().inflate(R.layout.class_row, parent, false);
+        v.setOnClickListener(onClick);
         return new ViewHolder(v);
     }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v){
+            ClassDetails_.intent(context).start();
+        }
+    };
 
     @Override
     public void onBindViewHolder(@NonNull ClassAdapter.ViewHolder holder, int position) {
