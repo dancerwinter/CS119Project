@@ -11,13 +11,30 @@
         android:layout_margin="15sp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/hwTitle"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textColor="@color/black"
-            android:text="TITLE" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/hwTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:text="TITLE" />
+
+            <Button
+                android:id="@+id/hwDone"
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_background"
+                android:text="done" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/hwDesc"
@@ -25,7 +42,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Lorem ipsum dolor sit amet, id sed falli gubergren. Ea modus iudico platonem ius. Etiam tamquam pri no, vix in discere torquatos similique. Illum omnes definiebas cu per.\n\nSolum porro repudiare ius at, id pri labores menandri necessitatibus, est et mollis tincidunt. Omnes dolorem forensibus ei nam. Id possit aeterno eam, maiestatis theophrastus ne eam. Cum ex oratio tractatos, vim et iudico homero comprehensam. Vix cu case ponderum patrioque. Dicat exerci postea ea mea, putent dolores menandri eos id." />
-
 
     </LinearLayout>
 
