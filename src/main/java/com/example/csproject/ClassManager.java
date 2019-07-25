@@ -49,7 +49,8 @@ public class ClassManager {
     }
 
     public RealmResults<Class> getUserClasses(String userUUID){
-        return realm.where(Class.class).contains("userUUID", userUUID).findAll();
+        RealmResults<Class> classList = realm.where(Class.class).contains("userUUID", userUUID).findAll();
+        return classList.sort("intStartTime");
     }
     public void addClass(Class c){
         realm.beginTransaction();
@@ -71,22 +72,40 @@ public class ClassManager {
 
         switch (dayInTheWeek){
             case 0:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Sunday",true).findAll();
+                RealmResults<Class> classList = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Sunday",true).findAll();
+                return classList.sort("intStartTime");
+
             case 1:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Monday",true).findAll();
+                RealmResults<Class> classList2 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Monday",true).findAll();
+                return classList2.sort("intStartTime");
             case 2:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Tuesday",true).findAll();
+                RealmResults<Class> classList3 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Tuesday",true).findAll();
+                return classList3.sort("intStartTime");
             case 3:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Wednesday",true).findAll();
+                RealmResults<Class> classList4 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Wednesday",true).findAll();
+                return classList4.sort("intStartTime");
             case 4:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Thursday",true).findAll();
+                RealmResults<Class> classList5 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Thursday",true).findAll();
+                return classList5.sort("intStartTime");
             case 5:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Friday",true).findAll();
+                RealmResults<Class> classList6 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Friday",true).findAll();
+                return classList6.sort("intStartTime");
             case 6:
-                return realm.where(Class.class).contains("userUUID",userUUID).equalTo("Saturday",true).findAll();
+                RealmResults<Class> classList7 = realm.where(Class.class).contains("userUUID",userUUID).equalTo("Saturday",true).findAll();
+                return classList7.sort("intStartTime");
 
         }
         return null;
+    }
+    // returns True if there already exists a class with the same name
+    public Boolean classChecker(User u, String subject){
+        RealmResults<Class> classList = getUserClasses(u.getUUID());
+        for(Class c: classList){
+            if(c.getSubject().equals(subject)){
+                return true;
+            }
+        }
+        return false;
     }
     public void close() {
         realm.close();

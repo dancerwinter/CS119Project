@@ -1,5 +1,6 @@
 package com.example.csproject;
 
+import android.content.Intent;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -7,12 +8,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 @EActivity(R.layout.activity_edit_class)
 public class editClass extends AppCompatActivity {
@@ -85,6 +94,14 @@ public class editClass extends AppCompatActivity {
         edTimeStart.setText(classEdited.getTimeStart());
         edTimeEnd.setText(classEdited.getTimeEnd());
 
+        File getImageDir = getExternalCacheDir();
+        File savedImage = new File(getImageDir, classEdited.getSubject() + user.getUsername()+ ".jpeg");
+        System.out.println("init Edit");
+        if (savedImage.exists()) {
+            System.out.println("file exists");
+            refreshImageView(savedImage);
+        }
+
     }
     @Click(R.id.edCancelBtn)
     public void cancel(){
@@ -146,6 +163,70 @@ public class editClass extends AppCompatActivity {
 
     @Click(R.id.ecChangePic)
     public void changePic() {
+        String name = edSubj.getText().toString();
 
+        if (name.equals("")) {
+            pop("Please input first a subject name");
+        }
+        else {
+            ClassPhotoCrop_.intent(this)
+                    .extra("imgName", name)
+                    .startForResult(0);
+        }
+    }
+    public void loadPhoto() {
+        // check if savedImage.jpeg exists in path
+        // load via picasso if exists
+
+        // change image name to username + number in array
+        File getImageDir = getExternalCacheDir();
+
+        String name = edSubj.getText().toString();
+        System.out.println(name);
+        File savedImage = new File(getImageDir, name);
+
+        if (savedImage.exists()) {
+            refreshImageView(savedImage);
+        }
+    }
+    private void refreshImageView(File savedImage) {
+        Picasso.with(this)
+                .load(savedImage)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(ecImageViewClass);
+    }
+
+    public void onActivityResult(int requestCode, int responseCode, Intent data) {
+        if (requestCode==0) {
+            if (responseCode==100) {
+                // save rawImage to file savedImage.jpeg
+                // load file via picasso
+                byte[] jpeg = data.getByteArrayExtra("rawJpeg");
+                String name = data.getStringExtra("subjectName");
+
+                try {
+                    File savedImage = saveFile(jpeg, name);
+                    System.out.println(name +user.getUsername()+ " onAct");
+                    refreshImageView(savedImage);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    private File saveFile(byte[] jpeg, String name) throws IOException {
+        // gets the sd card path
+        File getImageDir = getExternalCacheDir();
+
+        String filename = name + user.getUsername()+ ".jpeg";
+
+        // change image name to username + number in array
+        File savedImage = new File(getImageDir, filename);
+
+        FileOutputStream fos = new FileOutputStream(savedImage);
+        fos.write(jpeg);
+        fos.close();
+        return savedImage;
     }
 }

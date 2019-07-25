@@ -1,5 +1,7 @@
 package com.example.csproject;
 
+import android.content.Intent;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -20,6 +22,7 @@ public class Class extends RealmObject {
     private Boolean Friday;
     private Boolean Saturday;
     private Boolean Sunday;
+    private int intStartTime;
 
     public Boolean getMonday() {
         return Monday;
@@ -136,6 +139,12 @@ public class Class extends RealmObject {
         this.room = room;
     }
 
+    public void setIntStartTime(){
+        this.intStartTime = Integer.parseInt(timeStart);
+    }
+    public int getIntStartTime(){
+        return intStartTime;
+    }
 
 
     public String getSubject() {
@@ -155,6 +164,7 @@ public class Class extends RealmObject {
 
     public void setTimeStart(String timeStart) {
         this.timeStart = timeStart;
+        setIntStartTime();
     }
 
     public String getTimeEnd() {
