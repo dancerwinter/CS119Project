@@ -21,6 +21,8 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+import io.realm.RealmResults;
+
 @EActivity(R.layout.activity_class_details)
 public class ClassDetails extends AppCompatActivity {
 
@@ -46,6 +48,8 @@ public class ClassDetails extends AppCompatActivity {
     ClassManager cman;
     @Bean
     UserManager uman;
+    @Bean
+    HomeworkManager hman;
     private Class classDeets;
     private User user;
     @AfterViews
@@ -53,6 +57,7 @@ public class ClassDetails extends AppCompatActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
+
         classDeets = cman.getClass(classUUID);
         user = uman.getUser2(classDeets.getUserUUID());
         cdSubj.setText(classDeets.getSubject());
@@ -69,10 +74,12 @@ public class ClassDetails extends AppCompatActivity {
             refreshImageView(savedImage);
         }
 
-
-
-        //HomeworkAdapter hwa = new ClassAdapter(classList, this);
-        //recyclerView.setAdapter(hwa);
+        RealmResults<Homework> homeworkList = hman.getHomeworkList(user.getUsername(),classDeets.getSubject());
+        for(Homework h: homeworkList){
+            System.out.println(h.getSubject() + "deets");
+        }
+        HomeworkAdapter hwa = new HomeworkAdapter(homeworkList, this);
+        recyclerView.setAdapter(hwa);
     }
     private void refreshImageView(File savedImage) {
         Picasso.with(this)
@@ -84,9 +91,18 @@ public class ClassDetails extends AppCompatActivity {
 
     @Click(R.id.cdAddHW)
     public void addHomework() {
-        AddHomework_.intent(this).start();
+        cman.close();
+        uman.close();
+        finish();
+        AddHomework_.intent(this)
+                .username(user.getUsername())
+                .classUUID(classUUID)
+                .start();
     }
 
+    public void deleteHW(Homework h){
+        hman.deleteHomework(h);
+    }
     private String repeatMaker(Boolean mon, Boolean tue, Boolean wed, Boolean thu, Boolean fri, Boolean sat, Boolean sun){
         String result = "";
         if(mon){

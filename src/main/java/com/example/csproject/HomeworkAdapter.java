@@ -2,6 +2,7 @@ package com.example.csproject;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +16,9 @@ import io.realm.RealmResults;
 
 public class HomeworkAdapter extends RealmRecyclerViewAdapter<Homework, HomeworkAdapter.ViewHolder> {
 
-    private MainActivity context;
+    private ClassDetails context;
 
-    public HomeworkAdapter(@Nullable RealmResults<Homework> data, MainActivity context) {
+    public HomeworkAdapter(@Nullable RealmResults<Homework> data, ClassDetails context) {
         super(data, true);
         this.context = context;
     }
@@ -33,12 +34,15 @@ public class HomeworkAdapter extends RealmRecyclerViewAdapter<Homework, Homework
 
         private TextView tvTitle;
         private TextView tvDesc;
-
+        private Button done;
         public ViewHolder(@Nonnull View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.hwTitle);
             tvDesc = itemView.findViewById(R.id.hwDesc);
+            done = itemView.findViewById(R.id.hwDone);
+
+            done.setOnClickListener(deleteListener);
         }
     }
 
@@ -47,5 +51,13 @@ public class HomeworkAdapter extends RealmRecyclerViewAdapter<Homework, Homework
         Homework h = getItem(position);
         holder.tvTitle.setText(h.getTitle());
         holder.tvDesc.setText(h.getDescription());
+        holder.done.setTag(h);
     }
+    private View.OnClickListener deleteListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Homework c = (Homework) v.getTag();
+            context.deleteHW(c);
+        }
+    };
 }
