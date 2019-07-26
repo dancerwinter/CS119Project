@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         if(classSize > 1){
             cPlur = "classes";
         }
-        welcomeText.setText("\nWelcome " + uname + "\nYou have " + classSize + " " + cPlur+ " " + "today\n");
+        welcomeText.setText("\nWelcome " + uname + "\nYou have " + classSize + " " + cPlur+ " " + "today");
 
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         if(classSize > 1){
             cPlur = "classes";
         }
-        welcomeText.setText("\nWelcome " + uname + "\nYou have " + classSize + " " + cPlur+ " " + "today\n");
+        welcomeText.setText("\nWelcome " + uname + "\nYou have " + classSize + " " + cPlur+ " " + "today");
     }
 
     @Click(R.id.addClassBtn)

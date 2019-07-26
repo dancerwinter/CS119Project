@@ -42,7 +42,7 @@ public class HomeworkManager {
 //            System.out.println(h.getOwnerUsername());
 //        }
 
-        return realm.where(Homework.class).contains("ownerUsername", username).contains("subject", subject).and().findAll();
+        return realm.where(Homework.class).contains("ownerUsername", username).and().contains("subject", subject).findAll();
     }
 
     public void deleteHomework(Homework h){

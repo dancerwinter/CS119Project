@@ -62,7 +62,7 @@ public class AddHomework extends AppCompatActivity {
         hman.close();
         hman.close();
         finish();
-        ClassDetails_.intent(this).start();
+
     }
 
 }

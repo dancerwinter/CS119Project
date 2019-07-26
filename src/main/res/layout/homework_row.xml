@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10sp"
     android:background="@color/white">
 
     <LinearLayout
@@ -39,7 +40,7 @@
         <TextView
             android:id="@+id/hwDesc"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Lorem ipsum dolor sit amet, id sed falli gubergren. Ea modus iudico platonem ius. Etiam tamquam pri no, vix in discere torquatos similique. Illum omnes definiebas cu per.\n\nSolum porro repudiare ius at, id pri labores menandri necessitatibus, est et mollis tincidunt. Omnes dolorem forensibus ei nam. Id possit aeterno eam, maiestatis theophrastus ne eam. Cum ex oratio tractatos, vim et iudico homero comprehensam. Vix cu case ponderum patrioque. Dicat exerci postea ea mea, putent dolores menandri eos id." />
 

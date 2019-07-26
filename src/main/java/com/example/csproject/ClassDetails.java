@@ -93,7 +93,6 @@ public class ClassDetails extends AppCompatActivity {
     public void addHomework() {
         cman.close();
         uman.close();
-        finish();
         AddHomework_.intent(this)
                 .username(user.getUsername())
                 .classUUID(classUUID)
@@ -103,6 +102,7 @@ public class ClassDetails extends AppCompatActivity {
     public void deleteHW(Homework h){
         hman.deleteHomework(h);
     }
+    
     private String repeatMaker(Boolean mon, Boolean tue, Boolean wed, Boolean thu, Boolean fri, Boolean sat, Boolean sun){
         String result = "";
         if(mon){
@@ -115,16 +115,16 @@ public class ClassDetails extends AppCompatActivity {
             result += "W ";
         }
         if(thu){
-            result += "Th ";
+            result += "TH ";
         }
         if(fri){
             result += "F ";
         }
         if(sat){
-            result += "S ";
+            result += "SAT ";
         }
         if(sun){
-            result += "Sn ";
+            result += "SUN ";
         }
 
         return result;
