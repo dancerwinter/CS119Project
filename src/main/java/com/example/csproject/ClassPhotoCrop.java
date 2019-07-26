@@ -37,6 +37,11 @@ public class ClassPhotoCrop extends AppCompatActivity {
         startActivityForResult(getPickImageChooserIntent(), 200);
     }
 
+    @Click(R.id.cropCancel)
+    public void cancel() {
+        finish();
+    }
+
     @Click(R.id.cropImage)
     public void cropImage() {
         Bitmap cropped =  cropImageView.getCroppedImage(500, 500);
@@ -68,12 +73,6 @@ public class ClassPhotoCrop extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        //cropImage();
-        finish();
-    }
 
     public void onActivityResult(int responseCode, int resultCode, Intent data) {
         // MAKE SURE UNCOMMENT THIS IF USED IN A FRAGMENT
