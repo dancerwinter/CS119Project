@@ -102,7 +102,7 @@ public class ClassDetails extends AppCompatActivity {
     public void deleteHW(Homework h){
         hman.deleteHomework(h);
     }
-    
+
     private String repeatMaker(Boolean mon, Boolean tue, Boolean wed, Boolean thu, Boolean fri, Boolean sat, Boolean sun){
         String result = "";
         if(mon){

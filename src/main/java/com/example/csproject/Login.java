@@ -1,7 +1,11 @@
 package com.example.csproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,6 +31,9 @@ public class Login extends AppCompatActivity {
     UserManager uman;
     @Bean
     MyPrefs prefs;
+
+    private NotificationUtils mNotificationUtils;
+
     @AfterViews
     public void init(){
         ArrayList<String> rememberedCredentials = prefs.getRememberedCredentials();
@@ -38,6 +45,13 @@ public class Login extends AppCompatActivity {
 
     @Click(R.id.loginSignInBtn)
     public void signIn() {
+
+
+       NotificationUtils m = new NotificationUtils(this);
+
+       Notification n = m.getAndroidChannelNotification("Neil", "was here").build();
+       m.getManager().notify(1, n);
+
         if(username.getText().toString().equals("") || password.getText().toString().equals("")){
             pop("please enter full credentials");
         }
