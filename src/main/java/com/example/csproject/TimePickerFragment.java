@@ -38,8 +38,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
         if (minute < 10)
-            tv.setText(String.valueOf(hourOfDay)+":0"+String.valueOf(minute));
+            tv.setText(String.valueOf(hourOfDay)+"0"+String.valueOf(minute));
         else
-            tv.setText(String.valueOf(hourOfDay)+":"+String.valueOf(minute));
+            tv.setText(String.valueOf(hourOfDay)+String.valueOf(minute));
     }
 }
