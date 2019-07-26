@@ -2,6 +2,7 @@ package com.example.csproject;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,18 +24,31 @@ public class ClassAdapter extends RealmRecyclerViewAdapter<Class,ClassAdapter.Vi
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = context.getLayoutInflater().inflate(R.layout.class_row, parent, false);
+//        v.setOnClickListener(onClick);
         return new ViewHolder(v);
     }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v){
+            Class c = (Class) v.getTag();
+            ClassDetails_.intent(context)
+                    .classUUID(c.getUUID())
+                    .start();
+        }
+    };
 
     @Override
     public void onBindViewHolder(@NonNull ClassAdapter.ViewHolder holder, int position) {
         Class c = getItem(position);
+
         holder.tvSubject.setText(c.getSubject() + " - ");
         holder.tvSection.setText(c.getSection());
         holder.tvTeacher.setText(c.getTeacher());
         holder.tvTime.setText(c.getTimeStart() + " - " + c.getTimeEnd());
         holder.tvRepeat.setText(repeatMaker(c.getMonday(),c.getTuesday(),c.getWednesday(),c.getThursday(),c.getFriday(),c.getSaturday(),c.getSunday()));
         holder.tvLocation.setText(c.getBuilding() + " " + c.getRoom());
+        holder.layout.setTag(c);
 
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -44,6 +58,7 @@ public class ClassAdapter extends RealmRecyclerViewAdapter<Class,ClassAdapter.Vi
         private TextView tvTeacher;
         private TextView tvRepeat;
         private TextView tvLocation;
+        private LinearLayout layout;
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvSubject = itemView.findViewById(R.id.tvSubject);
@@ -52,6 +67,9 @@ public class ClassAdapter extends RealmRecyclerViewAdapter<Class,ClassAdapter.Vi
             tvTeacher = itemView.findViewById(R.id.tvTeacher);
             tvRepeat = itemView.findViewById(R.id.tvRepeat);
             tvLocation = itemView.findViewById(R.id.tvLocation);
+            layout = itemView.findViewById(R.id.layout);
+
+            layout.setOnClickListener(onClick);
 
         }
     }

@@ -20,13 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="\nWelcome Username\nYou have 3 classes today\n" />
+        android:layout_marginBottom="15sp"
+        android:text="\nWelcome Username\nYou have 3 classes today" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_marginTop="15sp"
         android:layout_marginBottom="15sp"
         android:layout_weight="1" />
 

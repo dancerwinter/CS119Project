@@ -62,10 +62,17 @@ public class ClassPhotoCrop extends AppCompatActivity {
             setResult(100, i);
             finish();
         }
+
+        else {
+            finish();
+        }
     }
 
+    @Override
     public void onBackPressed() {
-        cropImage();
+        super.onBackPressed();
+        //cropImage();
+        finish();
     }
 
     public void onActivityResult(int responseCode, int resultCode, Intent data) {
