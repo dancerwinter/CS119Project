@@ -100,6 +100,17 @@ public class UserManager {
         }
         return result;
     }
+    public User getUser2(String UUID){
+        RealmResults<User> userList = getUserList();
+        User result = null;
+        for(User u: userList){
+            if(u.getUUID().equals(UUID)){
+                result = u;
+                return result;
+            }
+        }
+        return result;
+    }
     public void close() {
         realm.close();
     }

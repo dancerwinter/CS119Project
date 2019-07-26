@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_weight="1"
     android:layout_marginBottom="10dp"
+    android:layout_weight="1"
+    android:background="@color/white"
+    android:orientation="vertical"
     android:padding="15dp">
 
     <LinearLayout
@@ -17,27 +18,27 @@
             android:id="@+id/tvSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Subject Code"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:text="Subject Code" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tvSection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=" - Section"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:text=" - Section" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tvTeacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_weight="1"
             android:gravity="right"
-            android:textSize="12sp"
-            android:text="Francisco, Joy Faith Anne D." />
+            android:text="Francisco, Joy Faith Anne D."
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -45,8 +46,8 @@
         android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="12:30 - 14:00" />
+        android:text="12:30 - 14:00"
+        android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="M W F"
-            android:visibility="gone"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"

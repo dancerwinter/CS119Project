@@ -9,6 +9,24 @@ public class Homework extends RealmObject {
     private String title;
     private String description;
     private String dueDate;
+    private String ownerUsername;
+    private String subject;
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
+    }
 
     public String getTitle() {
         return title;
