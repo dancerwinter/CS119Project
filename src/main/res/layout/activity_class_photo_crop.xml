@@ -49,4 +49,21 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:layout_marginRight="9sp"
+        android:layout_marginLeft="9sp">
+
+        <Button
+            android:id="@+id/cropCancel"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:textColor="@color/black"
+            android:background="@drawable/btn_background"
+            android:text="cancel" />
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -1,12 +1,15 @@
 package com.example.csproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
 import android.content.Intent;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -83,6 +86,21 @@ public class AddClass extends AppCompatActivity {
         String name = prefs.getCurrentUser();
         currentUser = uman.getUser(name);
         checkPermissions();
+    }
+
+    @Click(R.id.edTimeStart)
+    public void changeTime() {
+        showTimePickerDialog(acTimeStart);
+    }
+
+    @Click(R.id.edTimeEnd)
+    public void changeTime2() {
+        showTimePickerDialog(acTimeEnd);
+    }
+
+    public void showTimePickerDialog(EditText tv) {
+        DialogFragment newFragment = new TimePickerFragment(tv);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
     public void checkPermissions() {
