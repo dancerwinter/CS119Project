@@ -16,18 +16,33 @@ public class HomeworkManager {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(h);
         realm.commitTransaction();
+        System.out.println("Homework Added");
+        RealmResults<Homework> homeworkList = getAllHomework();
+//        for(Homework hh:homeworkList){
+//            System.out.println(hh.getTitle());
+//        }
     }
 
     public Homework createHomework(String title, String description, String username, String subject){
         Homework h = new Homework();
         h.setTitle(title);
         h.setDescription(description);
+        System.out.println(username + "addhw");
         h.setOwnerUsername(username);
         h.setSubject(subject);
         return h;
     }
+    public RealmResults<Homework> getAllHomework(){
+        return realm.where(Homework.class).findAll();
+    }
     public RealmResults<Homework> getHomeworkList(String username, String subject){
-        return realm.where(Homework.class).contains("ownerUsername", username).contains("subject", subject).findAll();
+        RealmResults<Homework> homeworkList = getAllHomework();
+
+//        for(Homework h : homeworkList){
+//            System.out.println(h.getOwnerUsername());
+//        }
+
+        return realm.where(Homework.class).contains("ownerUsername", username).contains("subject", subject).and().findAll();
     }
 
     public void deleteHomework(Homework h){
